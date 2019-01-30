@@ -246,9 +246,10 @@ def main(wf):
 
         elif errorCode == "0":
             isEnglish = check_English(query)
+            if rt.get("basic"):
+                get_phonetic(query, isEnglish, rt)
+                get_explains(query, isEnglish, rt)
             get_translation(query, isEnglish, rt)
-            get_phonetic(query, isEnglish, rt)
-            get_explains(query, isEnglish, rt)
             get_web_translation(query, isEnglish, rt)
 
         else:
