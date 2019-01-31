@@ -50,13 +50,13 @@ class SaveWord(object):
 
     def loginToYoudao(self):
         self.cj.clear()
-        first_page = self.opener.open('http://account.youdao.com/login?back_url=http://dict.youdao.com&service=dict')
+        first_page = self.opener.open('https://account.youdao.com/login?back_url=https://dict.youdao.com&service=dict')
         login_data = urllib.urlencode({
             'app'  : 'web',
             'tp'  : 'urstoken',
             'cf'  : '7',
             'fr'  : '1',
-            'ru'  : 'http://dict.youdao.com',
+            'ru'  : 'https://dict.youdao.com',
             'product'  : 'DICT',
             'type'  : '1',
             'um'  : 'true',
@@ -79,10 +79,10 @@ class SaveWord(object):
             'tags' : self.word.get('tags'),
         })
         self.opener.addheaders = fake_header + [
-            ('Referer', 'http://dict.youdao.com/wordbook/wordlist'),
+            ('Referer', 'https://dict.youdao.com/wordbook/wordlist'),
         ]
-        response = self.opener.open('http://dict.youdao.com/wordbook/wordlist?action=add', post_data)
-        return response.headers.get('Location') == 'http://dict.youdao.com/wordbook/wordlist'
+        response = self.opener.open('https://dict.youdao.com/wordbook/wordlist?action=add', post_data)
+        return response.headers.get('Location') == 'https://dict.youdao.com/wordbook/wordlist'
 
     def generateWordBook(self, source_xml):
         item = self.word
